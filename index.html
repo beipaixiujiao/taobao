@@ -1,0 +1,2923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>taobao</title>
+    <link rel="stylesheet" href="taobao.css">
+    <link rel="stylesheet" href="swiper.min.css">
+</head>
+
+<body>
+    <div class="site-nav-bar">
+        <div class="site-nav">
+            <div class="site-nav-account">
+                <div class="account-name">
+                    <span class="register">konglh1996</span>
+                    <span class="icon size_12px">&#xe6a6;</span>
+                </div>
+                <div class="account-message">
+                    <span class="icon size_12px tangerine">&#xe72d;</span>
+                    <span class="register">消息</span>
+                    <span class="icon size_12px">&#xe6a6;</span>
+                </div>
+                <div class="mobile-phone">
+                    <span class="register">手机逛淘宝</span>
+                </div>
+            </div>
+            <ul class="my-taobao-nav">
+                <li>
+                    <span class="icon size_12px">&#xe698;</span>
+                    <span class="taobao-nav-content">我的淘宝</span>
+                    <span class="icon size_12px">&#xe6a6;</span>
+                    <ul class="taobao-nav-select mytaobao">
+                        <li class="my-taobao-select-Item" v-for="(myTaobaoSelect,index) in MyTaobaoSelectItems">
+                            <a  v-cloak href="##">{{myTaobaoSelect.MyTaobaoSelectItem}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="icon size_12px tangerine">&#xe698;</span>
+                    <span class="taobao-nav-content">购物车</span>
+                    <span class="icon size_12px">&#xe6a6;</span>
+                    <!-- <ul class="taobao-nav-select">
+                        <li class="my-taobao-select-Item">
+                            <a href="##">您购物车里还没有任何宝贝</a>
+                        </li>
+                    </ul> -->
+                </li>
+                <li>
+                    <span class="icon size_12px">&#xe730;</span>
+                    <span class="taobao-nav-content">收藏夹</span>
+                    <span class="icon size_12px">&#xe6a6;</span>
+                    <ul class="taobao-nav-select favorite">
+                        <li class="my-taobao-select-Item" v-for="(favoriteSelect,index) in favoriteSelectItems">
+                            <a v-cloak href="##">{{favoriteSelect.favoriteSelectItem}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="taobao-nav-content">商品分类</span>
+                </li>
+                <!-- <li> -->
+                <span>丨</span>
+                <!-- </li> -->
+                <li>
+                    <span class="taobao-nav-content">卖家中心</span>
+                    <span class="icon size_12px">&#xe6a6;</span>
+                    <ul class="taobao-nav-select sellercentral">
+                        <li class="my-taobao-select-Item" v-for="(sellerSelect,index) in sellerSelectItems">
+                            <a v-cloak href="##">{{sellerSelect.sellerSelectItem}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="taobao-nav-content">联系客服</span>
+                    <span class="icon size_12px">&#xe6a6;</span>
+                    <ul class="taobao-nav-select service">
+                        <li class="my-taobao-select-Item" v-for="(serviceSelect,index) in serviceSelectItems">
+                            <a href="##">{{serviceSelect.serviceSelectItem}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="siteMapMouse">
+                    <span class="icon size_12px tangerine">&#xe730;</span>
+                    <span class="taobao-nav-content">网站导航</span>
+                    <span class="icon size_12px">&#xe6a6;</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="sitemap">
+        <div class="theme-bazaar sitemap-item">
+            <h3>主题市场</h3>
+            <ul class="theme-items sitemap-item-flex">
+                <li v-for="theme in 36">
+                    <a href="##">女装</a>
+                </li>
+            </ul>
+        </div>
+        <div class="feature-bazaar sitemap-item">
+            <h3>特色市场</h3>
+            <ul class="feature-items sitemap-item-flex">
+                <li v-for="feature in 33">
+                    <a href="##">爱逛街</a>
+                </li>
+            </ul>
+        </div>
+        <div class="ali-app sitemap-item">
+            <h3>阿里APP</h3>
+            <ul class="aliapp-items sitemap-item-flex">
+                <li v-for="aliapp in 21">
+                    <a href="##">淘宝</a>
+                </li>
+            </ul>
+        </div>
+        <div class="splendid-recommend sitemap-item">
+            <h3>精彩推荐集</h3>
+            <ul class="splendid-items sitemap-item-flex">
+                <li v-for="splendid in 12">
+                    <a href="##">余额宝</a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+    </div>
+    <div class="topBanner">
+        <a href="##">
+            <img src="img/topBanner.jpg" alt="">
+        </a>
+    </div>
+    <div class="taobao-top">
+        <div class="top-wrapper">
+            <div class="taobao-logo">
+                <a href="##">
+                    <img src="img/淘宝网logo.png_145x145.jpg" alt="">
+                </a>
+            </div>
+            <div class="search-box">
+                <ul class="search-tab">
+                    <li v-cloak @click="radioGroup(index)" v-for="(item,index) in items" :class="{searchRadioToggle:item.toggle,taobaosearchRadioToggle:tianmao}">{{item.name}}</li>
+                </ul>
+                <div class="search-input">
+                    <div class="search-wrapper" :class="{tianmaoSearchWrapper:tianmao}">
+                        <label for=".search-input-box" class="icon search-logo" :class="{searchlogoShow:searchShow}">&#xe627;</label>
+                        <input type="text" class="search-input-box" placeholder="黄龙600" v-model="inputContent">
+                        <span class="camera-logo icon">&#xe670;</span>
+                    </div>
+                    <button class="search-button" :class="{tianmaoSearchButton:tianmao}">搜索</button>
+                </div>
+                <div class="goods-tab">
+                    <ul class="goods-tab-list">
+                        <li v-for="(item,index) in goodsTabList">
+                            <a v-cloak href="##">{{item.tabName}}</a>
+                        </li>
+                    </ul>
+                    <a class="more" href="##">更多></a>
+                </div>
+            </div>
+            <div class="play-normal">
+                <a href="##">
+                    <img src="https://img.alicdn.com/tfs/TB1UaHDRVXXXXcAaXXXXXXXXXXX-120-120.gif" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="crumbs-nav">
+            <ul>
+                <li v-for="(item,index) in curmbsNavItemsOne">
+                    <a v-cloak href="##">{{item.curmbsName}}</a>
+                </li>
+            </ul>
+            <span>丨</span>
+            <ul>
+                <li v-for="(item,index) in curmbsNavItemsTwo">
+                    <a v-cloak href="##">{{item.curmbsName}}</a>
+                </li>
+            </ul>
+            <span>丨</span>
+            <ul>
+                <li v-for="(item,index) in curmbsNavItemsThree">
+                    <a v-cloak href="##">{{item.curmbsName}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="screen-outer">
+            <div class="jcce">
+                <ul>
+                    <li class="jcce-top">
+                        <span>主题市场</span>
+                        <span class="icon">&#xe790;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                        <span class="icon hot">&#xe636;</span>
+                        </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                        <span class="icon hot">&#xe636;</span>
+                        </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                        <span class="icon hot">&#xe636;</span>
+                        </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-item">
+                        <span class="icon jcceIcon">&#xe601;</span>
+                        <span class="jcceContent">
+                        <a href="##">女装</a>/<a href="##">男装</a>/<a href="##">内衣</a>
+                    </span>
+                        <span class="icon jcceArrow">&#xe626;</span>
+                    </li>
+                    <li class="jcce-bottom">
+                        <a href="##">
+                            <img src="img/jcce-bottom.jpg_190x190q90.jpg_.webp" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="swiper">
+                <div class="swiper-container swiper-one">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="##">
+                                <img src="img/swiper1.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="##">
+                                <img src="img/swiper2.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="##">
+                                <img src="img/swiper3.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="##">
+                                <img src="img/swiper4.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="##">
+                                <img src="img/swiper5.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"><span class="icon button-paging">&#xe62c;</span></div>
+                    <div class="swiper-button-next"><span class="icon button-paging">&#xe62a;</span></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-container swiper-two">
+                    <div class="tmall-hd">
+                        <img src="img/tmall.gif" alt="">
+                        <h3>天猫必逛</h3>
+                        <h4>热门品牌，天天上天猫</h4>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="swiper-wrapper">
+                        <!-- <div class="swiper-slide swiper-1">
+                        <a href="##">
+                            <img src="img/swiper-2-1-1.jpg_210x1000q90.jpg" alt="">
+                        </a>
+                        <a href="##">
+                            <img src="img/swiper-2-1-2.jpg_210x1000q90.jpg" alt="">
+                        </a>
+                        <a href="##">
+                            <img src="img/swiper-2-1-3.jpg_210x1000q90.jpg" alt="">
+                        </a>
+                        <a href="##">
+                            <img src="img/swiper-2-1-4.jpg_210x1000q90.jpg" alt="">
+                        </a>
+                        <a href="##">
+                            <img src="img/swiper-2-1-5.jpg_210x1000q90.jpg" alt="">
+                        </a>
+                    </div> -->
+                        <div class="swiper-slide swiper-2">
+                            <a href="##">
+                                <img src="img/swiper-2-2-1jpg.jpg" alt="">
+                            </a>
+                            <a href="##">
+                                <img src="img/swiper-2-2-2.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide swiper-3">
+                            <a href="##">
+                                <img src="img/swiper-2-3-1.jpg" alt="">
+                            </a>
+                            <a href="##">
+                                <img src="img/swiper-2-3-2.png_200x200q90.jpg" alt="">
+                            </a>
+                            <a href="##">
+                                <img src="img/swiper-2-3-3.jpg_200x200q90.jpg" alt="">
+                            </a>
+                            <a href="##">
+                                <img src="img/swiper-2-3-4.jpg_200x200q90.jpg" alt="">
+                            </a>
+                        </div>
+                        <!-- <div class="swiper-slide">
+                        <a href="##">
+                            <img src="img/swiper4.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="##">
+                            <img src="img/swiper5.jpg" alt="">
+                        </a>
+                    </div> -->
+                    </div>
+                    <!-- <div class="swiper-pagination"></div> -->
+                    <div class="swiper-button-prev"><span class="icon button-paging">&#xe62c;</span></div>
+                    <div class="swiper-button-next"><span class="icon button-paging">&#xe62a;</span></div>
+                    <!-- Add Pagination -->
+                </div>
+            </div>
+            <div class="sub-column">
+                <div class="sub-column-1">
+                    <a href="##">
+                        <img src="img/sub-column-1.jpg_290x290q90.jpg_.webp" alt="">
+                    </a>
+                </div>
+                <div class="sub-column-2">
+                    <h5>今日热卖</h5>
+                    <a href="##">
+                        <img src="img/sub-column-2.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="tbh-member">
+                    <div class="member">
+                        <div class="member-bd">
+                            <a href="##">
+                                <img src="img/member-via.png_60x60.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="member-nick-info">
+                            <span>Hi</span>
+                            <span>你好</span>
+                        </div>
+                        <p class="member-tjb">
+                            <a href="##"><span class="icon">&#xe612;</span>领淘金币等钱</a>
+                            <span>或去</span>
+                            <a href="##">会员俱乐部</a>
+                        </p>
+                        <div class="member-button-list">
+                            <button class="member-button button-width92">登录</button>
+                            <button class="member-button button-width75">注册</button>
+                            <button class="member-button button-width75">开店</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tbn-notice">
+                    <div class="tagNav" id="one">
+                        <!-- <ul class="notice-hd">
+                    <li class="hd-selected">公告</li>
+                    <li class="hd-selected">规则</li>
+                    <li class="hd-selected">论坛</li>
+                    <li class="hd-selected">安全</li>
+                    <li class="hd-selected">公益</li>
+                </ul> -->
+                        <ul>
+                            <li class="curTag" id="one1" onMouseMove="showTag('one',1)">公告</li>
+                            <li id="one2" onMouseMove="showTag('one',2)">规则</li>
+                            <li id="one3" onMouseOver="showTag('one',3)">论坛</li>
+                            <li id="one4" onMouseOver="showTag('one',4)">安全</li>
+                            <li id="one5" onMouseOver="showTag('one',5)">公益</li>
+                        </ul>
+                    </div>
+                    <div class="tagCon">
+                        <div class="curTag" id="oneCon1">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    马云： 人类不要再想制造一个人类
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    天猫双11将现三台一晚
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    阿里大幅增持Lazzada
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="oneCon2">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    旅游市场管理规范变更
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    新增淘宝金币通用规范
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    新增二手数码行业标准
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    淘宝认证相关规定变更
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="oneCon3">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    关于直播权限重要通知
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    商家内容成长全攻略
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    粉丝运营新工具！
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    十八纸颠覆家具想象
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="oneCon4">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    全国首例刷单炒信案
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    被判五年九个月！
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    做自己的首席风险官
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    发货提速那些事儿
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="oneCon5">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    跑赢房价的商家爱心
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    致百万商家的感谢信
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    闲鱼公益上线招募NGO
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    公益宝贝卖家发票索取
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tbn-conve">
+                    <div class="tagNav" id="two">
+                        <!-- <ul class="notice-hd">
+                    <li class="hd-selected">公告</li>
+                    <li class="hd-selected">规则</li>
+                    <li class="hd-selected">论坛</li>
+                    <li class="hd-selected">安全</li>
+                    <li class="hd-selected">公益</li>
+                </ul> -->
+                        <ul>
+                            <li class="suspend" id="two1" onMouseMove="suspendShow('two',1)">
+                                <div class="conve-icon"></div>
+                                <span>充话费</span>
+                            </li>
+                            <li class="suspend" id="two2" onMouseMove="suspendShow('two',2)">
+                                <div class="conve-icon"></div>
+                                <span>游戏</span>
+                            </li>
+                            <li class="suspend" id="two3" onMouseOver="suspendShow('two',3)">
+                                <div class="conve-icon"></div>
+                                <span>旅行</span>
+                            </li>
+                            <li class="suspend" id="two4" onMouseOver="suspendShow('two',4)">
+                                <div class="conve-icon"></div>
+                                <span>车险</span>
+                            </li>
+                            <li>
+                                <div class="conve-icon"></div>
+                                <span>彩票</span>
+                            </li>
+                            <li>
+                                <div class="conve-icon"></div>
+                                <span>电影</span>
+                            </li>
+                            <li>
+                                <div class="conve-icon"></div>
+                                <span>酒店</span>
+                            </li>
+                            <li>
+                                <div class="conve-icon"></div>
+                                <span>理财</span>
+                            </li>
+                            <li>
+                                <div class="conve-icon"></div>
+                                <span>找服务</span>
+                            </li>
+                            <li>
+                                <div class="conve-icon"></div>
+                                <span>音乐</span>
+                            </li>
+                            <li>
+                                <div class="conve-icon"></div>
+                                <span>水电煤</span>
+                            </li>
+                            <li>
+                                <div class="conve-icon"></div>
+                                <span>火车票</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tagCon">
+                        <div id="twoCon1">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    马云： 人类不要再想制造一个人类
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    天猫双11将现三台一晚
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    阿里大幅增持Lazzada
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="twoCon2">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    旅游市场管理规范变更
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    新增淘宝金币通用规范
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    新增二手数码行业标准
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    淘宝认证相关规定变更
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="twoCon3">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    关于直播权限重要通知
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    商家内容成长全攻略
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    粉丝运营新工具！
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    十八纸颠覆家具想象
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="twoCon4">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    全国首例刷单炒信案
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    被判五年九个月！
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    做自己的首席风险官
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    发货提速那些事儿
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="twoCon5">
+                            <ul>
+                                <li>
+                                    <a href="##">
+                                    跑赢房价的商家爱心
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    致百万商家的感谢信
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    闲鱼公益上线招募NGO
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="##">
+                                    公益宝贝卖家发票索取
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="aliApp">
+                    <div class="top">
+                        <span>阿里APP</span>
+                        <a href="##">
+                            更多<span class="icon">&#xe626;</span>
+                        </a>
+                        <!-- <span>更多<span class="icon">&#xe626;</span></span> -->
+                    </div>
+                    <ul class="apps-nav">
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav1.png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav2.png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav3.png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav4.png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav5.png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav6.png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav7.png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav8 (2).png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav9.png" alt="">
+                            </a>
+                        </li>
+                        <li class="nav">
+                            <a href="##">
+                                <img src="img/appnav10.png" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="taobao-top">
+                    <div class="title">
+                        <a href="##">
+                            更多<span class="icon">&#xe626;</span>
+                        </a>
+                    </div>
+                    <div class="swiper-container taobao-top-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="img/taobaotop1.jpg_60x60q90.jpg_.webp" alt="">
+                                <div class="right">
+                                    <div class="top">
+                                        微胖菇凉都爱这一款，轻松穿出显瘦潮流
+                                    </div>
+                                    <div class="content">
+                                        盛夏酷热难耐，微胖妹纸整个人也都变懒了，可是再懒也想要美美的，一条仙气满满、清新十足的连衣裙一定能帮你撩到心上人~只要选对款式，不仅能凸显好气质，还能凹出好身材。【好物推荐】中长款印花连衣裙，打造知性优雅的都市女性风格，简洁大气的版型设计，适合肉肉多的小仙女，修饰身形，遮肉显瘦，
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/taobaotop2.jpg_60x60q90.jpg_.webp" alt="">
+                                <div class="right">
+                                    <div class="top">
+                                        移动发布终端质量报告，你的手机排第几
+                                    </div>
+                                    <div class="content">
+                                        6月29日上午，GSMA全球终端峰会在上海召开。会上中国移动发布《中国移动2017年终端质量报告》，分为整机测评和专题测评两个方面。整机测评方面，评测体系由V2.0升级至V3.0，结合产业、用户、媒体的观点，优化终端质量评测体系，并按照不同价位段进行排名。整机测评排名上，3000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/taobaotop3.jpg_60x60q90.jpg_.webp" alt="">
+                                <div class="right">
+                                    <div class="top">
+                                        多肉|想要黑法师爆多头？一个字，掐！
+                                    </div>
+                                    <div class="content">
+                                        看到别人家的黑法师都是一连好几个头，满满当当的，是不是很羡慕？不用羡慕啦，今天小编就给大家分享一个让黑法师长出多头的好方法！一个字，掐！黑法师是较容易长成老桩的多肉，长长的茎干，顶端像一朵盛开的花朵，除了任由它自由生长或者从茎干上的生长点出会长出侧芽和砍头之外，黑法师并不容易长出
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <!--  <div class="swiper-pagination"></div> -->
+                    </div>
+                </div>
+                <div class="have-goods">
+                    <div class="title">
+                    </div>
+                    <div class="goods-list">
+                        <div class="item">
+                            <img src="img/goods-item1.jpg_.webp" alt="">
+                            <div class="right-intro">
+                                <div class="top">
+                                    San-X 动漫毛绒/抱枕/坐垫
+                                </div>
+                                <div class="content">
+                                    San-X日本黑白輕鬆小熊毛绒玩具公仔挂件，约125 x 95 x 50 mm，黑色的小熊挂件很可爱，毛绒玩具本身就很可爱，金属链子蛮时尚洋气的，上面还有个圆圆的挂牌，彰显时尚品质感，黑白分明的样子萌萌哒，可以做钥匙链也可以装饰链放在包包上或者其他能挂东西的地方，平时也可以拿着玩，很卡哇伊哦~
+                                </div>
+                                <div class="evaluate">
+                                    15 人说好
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/goods-item1.jpg_.webp" alt="">
+                            <div class="right-intro">
+                                <div class="top">
+                                    San-X 动漫毛绒/抱枕/坐垫
+                                </div>
+                                <div class="content">
+                                    San-X日本黑白輕鬆小熊毛绒玩具公仔挂件，约125 x 95 x 50 mm，黑色的小熊挂件很可爱，毛绒玩具本身就很可爱，金属链子蛮时尚洋气的，上面还有个圆圆的挂牌，彰显时尚品质感，黑白分明的样子萌萌哒，可以做钥匙链也可以装饰链放在包包上或者其他能挂东西的地方，平时也可以拿着玩，很卡哇伊哦~
+                                </div>
+                                <div class="evaluate">
+                                    15 人说好
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/goods-item1.jpg_.webp" alt="">
+                            <div class="right-intro">
+                                <div class="top">
+                                    San-X 动漫毛绒/抱枕/坐垫
+                                </div>
+                                <div class="content">
+                                    San-X日本黑白輕鬆小熊毛绒玩具公仔挂件，约125 x 95 x 50 mm，黑色的小熊挂件很可爱，毛绒玩具本身就很可爱，金属链子蛮时尚洋气的，上面还有个圆圆的挂牌，彰显时尚品质感，黑白分明的样子萌萌哒，可以做钥匙链也可以装饰链放在包包上或者其他能挂东西的地方，平时也可以拿着玩，很卡哇伊哦~
+                                </div>
+                                <div class="evaluate">
+                                    15 人说好
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/goods-item1.jpg_.webp" alt="">
+                            <div class="right-intro">
+                                <div class="top">
+                                    San-X 动漫毛绒/抱枕/坐垫
+                                </div>
+                                <div class="content">
+                                    San-X日本黑白輕鬆小熊毛绒玩具公仔挂件，约125 x 95 x 50 mm，黑色的小熊挂件很可爱，毛绒玩具本身就很可爱，金属链子蛮时尚洋气的，上面还有个圆圆的挂牌，彰显时尚品质感，黑白分明的样子萌萌哒，可以做钥匙链也可以装饰链放在包包上或者其他能挂东西的地方，平时也可以拿着玩，很卡哇伊哦~
+                                </div>
+                                <div class="evaluate">
+                                    15 人说好
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/goods-item1.jpg_.webp" alt="">
+                            <div class="right-intro">
+                                <div class="top">
+                                    San-X 动漫毛绒/抱枕/坐垫
+                                </div>
+                                <div class="content">
+                                    San-X日本黑白輕鬆小熊毛绒玩具公仔挂件，约125 x 95 x 50 mm，黑色的小熊挂件很可爱，毛绒玩具本身就很可爱，金属链子蛮时尚洋气的，上面还有个圆圆的挂牌，彰显时尚品质感，黑白分明的样子萌萌哒，可以做钥匙链也可以装饰链放在包包上或者其他能挂东西的地方，平时也可以拿着玩，很卡哇伊哦~
+                                </div>
+                                <div class="evaluate">
+                                    15 人说好
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/goods-item1.jpg_.webp" alt="">
+                            <div class="right-intro">
+                                <div class="top">
+                                    San-X 动漫毛绒/抱枕/坐垫
+                                </div>
+                                <div class="content">
+                                    San-X日本黑白輕鬆小熊毛绒玩具公仔挂件，约125 x 95 x 50 mm，黑色的小熊挂件很可爱，毛绒玩具本身就很可爱，金属链子蛮时尚洋气的，上面还有个圆圆的挂牌，彰显时尚品质感，黑白分明的样子萌萌哒，可以做钥匙链也可以装饰链放在包包上或者其他能挂东西的地方，平时也可以拿着玩，很卡哇伊哦~
+                                </div>
+                                <div class="evaluate">
+                                    15 人说好
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/goods-item1.jpg_.webp" alt="">
+                            <div class="right-intro">
+                                <div class="top">
+                                    San-X 动漫毛绒/抱枕/坐垫
+                                </div>
+                                <div class="content">
+                                    San-X日本黑白輕鬆小熊毛绒玩具公仔挂件，约125 x 95 x 50 mm，黑色的小熊挂件很可爱，毛绒玩具本身就很可爱，金属链子蛮时尚洋气的，上面还有个圆圆的挂牌，彰显时尚品质感，黑白分明的样子萌萌哒，可以做钥匙链也可以装饰链放在包包上或者其他能挂东西的地方，平时也可以拿着玩，很卡哇伊哦~
+                                </div>
+                                <div class="evaluate">
+                                    15 人说好
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/goods-item1.jpg_.webp" alt="">
+                            <div class="right-intro">
+                                <div class="top">
+                                    San-X 动漫毛绒/抱枕/坐垫
+                                </div>
+                                <div class="content">
+                                    San-X日本黑白輕鬆小熊毛绒玩具公仔挂件，约125 x 95 x 50 mm，黑色的小熊挂件很可爱，毛绒玩具本身就很可爱，金属链子蛮时尚洋气的，上面还有个圆圆的挂牌，彰显时尚品质感，黑白分明的样子萌萌哒，可以做钥匙链也可以装饰链放在包包上或者其他能挂东西的地方，平时也可以拿着玩，很卡哇伊哦~
+                                </div>
+                                <div class="evaluate">
+                                    15 人说好
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change icon">
+                            &#xe6a2; 换一组看看
+                        </div>
+                    </div>
+                </div>
+                <div class="good-shop">
+                    <div class="title">
+                    </div>
+                    <div class="shop-list">
+                        <div class="item">
+                            <strong>每日推荐</strong>
+                            <p>暂无店铺评价</p>
+                            <div class="box">
+                                <img src="img/dianputuijian1-1.jpg_100x100.jpg" alt="">
+                                <img src="img/dianputuijian1-2.jpg_100x100.jpg" alt="">
+                            </div>
+                            <img class="right" src="img/dianputuijian1-3.jpg_200x200.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <strong>每日推荐</strong>
+                            <p>暂无店铺评价</p>
+                            <div class="box">
+                                <img src="img/dianputuijian1-1.jpg_100x100.jpg" alt="">
+                                <img src="img/dianputuijian1-2.jpg_100x100.jpg" alt="">
+                            </div>
+                            <img class="right" src="img/dianputuijian1-3.jpg_200x200.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <strong>每日推荐</strong>
+                            <p>暂无店铺评价</p>
+                            <div class="box">
+                                <img src="img/dianputuijian1-1.jpg_100x100.jpg" alt="">
+                                <img src="img/dianputuijian1-2.jpg_100x100.jpg" alt="">
+                            </div>
+                            <img class="right" src="img/dianputuijian1-3.jpg_200x200.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <strong>每日推荐</strong>
+                            <p>暂无店铺评价</p>
+                            <div class="box">
+                                <img src="img/dianputuijian1-1.jpg_100x100.jpg" alt="">
+                                <img src="img/dianputuijian1-2.jpg_100x100.jpg" alt="">
+                            </div>
+                            <img class="right" src="img/dianputuijian1-3.jpg_200x200.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <strong>每日推荐</strong>
+                            <p>暂无店铺评价</p>
+                            <div class="box">
+                                <img src="img/dianputuijian1-1.jpg_100x100.jpg" alt="">
+                                <img src="img/dianputuijian1-2.jpg_100x100.jpg" alt="">
+                            </div>
+                            <img class="right" src="img/dianputuijian1-3.jpg_200x200.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tbn-belt">
+                <a href="##">
+                    <img src="img/btn-belt1.jpg_60x60q90.jpg_.webp" alt="">
+                    <div class="intro">
+                        <p class="title">女神范</p>
+                        <p class="content">就是要你好看</p>
+                        <p class="popularity icon">&#xe662; 人气2315456</p>
+                    </div>
+                </a>
+                <a href="##">
+                    <img src="img/btn-belt2.jpg_60x60q90.jpg_.webp" alt="">
+                    <div class="intro">
+                        <p class="title">理想家</p>
+                        <p class="content">想要这个家</p>
+                        <p class="popularity icon">&#xe662; 人气2315456</p>
+                    </div>
+                </a>
+                <a href="##">
+                    <img src="img/btn-belt3.jpg_60x60q90.jpg_.webp" alt="">
+                    <div class="intro">
+                        <p class="title">趣玩先锋</p>
+                        <p class="content">怪有意思的</p>
+                        <p class="popularity icon">&#xe662; 人气2315456</p>
+                    </div>
+                </a>
+                <a href="##">
+                    <img src="img/btn-belt4.jpg_60x60q90.jpg_.webp" alt="">
+                    <div class="intro">
+                        <p class="title">爱车一族</p>
+                        <p class="content">定义车生活</p>
+                        <p class="popularity icon">&#xe662; 人气2315456</p>
+                    </div>
+                </a>
+                <a href="##">
+                    <img src="img/btn-belt5.jpg_60x60q90.jpg_.webp" alt="">
+                    <div class="intro">
+                        <p class="title">水族爱好者</p>
+                        <p class="content">奇妙造景世界</p>
+                        <p class="popularity icon">&#xe662; 人气2315456</p>
+                    </div>
+                </a>
+            </div>
+            <div class="tbh-like-hd">
+                <a href="##">更多 <span class="icon">&#xe653;</span></a>
+            </div>
+            <div class="card">
+                <div class="like-item">
+                    <div class="slidebar">
+                        <img src="img/card-popular-Appliances.png_100x100q90.jpg_.webp" alt="">
+                        <p>热门TOP</p>
+                        <ul>
+                            <li>iPhone7</li>
+                            <li>S8</li>
+                            <li>游戏鼠标</li>
+                            <li>机械键盘</li>
+                            <li>单反相机</li>
+                            <li>AppleWatch</li>
+                            <li>DIY主机</li>
+                            <li>智能机器人</li>
+                            <li>制氧机</li>
+                            <li>榨汁机</li>
+                        </ul>
+                    </div>
+                    <div class="box-1">
+                        <div class="box1-1">
+                            <a href="##">
+                                <img src="img/card-手机精选.jpg_100x1000q90.jpg_.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="box1-1">
+                            <a href="##">
+                                <img src="img/card-torch-Appliances.jpg_100x1000q90.jpg_.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="box1-2">
+                            <a href="##">
+                                <img src="img/card-数码.jpg_180x180q90.jpg_.webp" alt="">
+                                <span class="slip"> 
+                                    <span class="leftwrapper">数码</span>
+                                <span class="rightwrapper">品质好货优选</span>
+                                <span class="bottomwrapper">为你精选数码行业优质好货</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-2">
+                        <div class="item1">
+                            <div class="left">
+                                <strong class="title">
+                                    数码好货
+                                </strong>
+                                <span class="subtitle">
+                                    等你来看
+                                </span>
+                            </div>
+                            <img src="img/Digital-good.jpg_80x80q90.jpg_.webp" alt="">
+                        </div>
+                        <div class="item1">
+                            <div class="left">
+                                <strong class="title">
+                                    品质家电
+                                </strong>
+                                <span class="subtitle">
+                                    等你来看
+                                </span>
+                            </div>
+                            <img src="img/quality-Appliances.jpg_80x80q90.jpg_.webp" alt="">
+                        </div>
+                        <div class="item2 background1">
+                            <div class="title">
+                                二手数码商品
+                            </div>
+                        </div>
+                        <div class="item2  background2">
+                            <div class="title">
+                                区域零售速达
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="like-item">
+                    <div class="slidebar">
+                        <img src="img/card-jiyoujia.png_100x100q90.jpg_.webp" alt="">
+                        <p>热门TOP</p>
+                        <ul>
+                            <li>iPhone7</li>
+                            <li>S8</li>
+                            <li>游戏鼠标</li>
+                            <li>机械键盘</li>
+                            <li>单反相机</li>
+                            <li>AppleWatch</li>
+                            <li>DIY主机</li>
+                            <li>智能机器人</li>
+                            <li>制氧机</li>
+                            <li>榨汁机</li>
+                        </ul>
+                    </div>
+                    <div class="box-1">
+                        <div class="box1-1">
+                            <a href="##">
+                                <img src="img/card-手机精选.jpg_100x1000q90.jpg_.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="box1-1">
+                            <a href="##">
+                                <img src="img/card-torch-Appliances.jpg_100x1000q90.jpg_.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="box1-2">
+                            <a href="##">
+                                <img src="img/card-数码.jpg_180x180q90.jpg_.webp" alt="">
+                                <span class="slip"> 
+                                    <span class="leftwrapper">数码</span>
+                                <span class="rightwrapper">品质好货优选</span>
+                                <span class="bottomwrapper">为你精选数码行业优质好货</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-2">
+                        <div class="item1">
+                            <div class="left">
+                                <strong class="title">
+                                    数码好货
+                                </strong>
+                                <span class="subtitle">
+                                    等你来看
+                                </span>
+                            </div>
+                            <img src="img/Digital-good.jpg_80x80q90.jpg_.webp" alt="">
+                        </div>
+                        <div class="item1">
+                            <div class="left">
+                                <strong class="title">
+                                    品质家电
+                                </strong>
+                                <span class="subtitle">
+                                    等你来看
+                                </span>
+                            </div>
+                            <img src="img/quality-Appliances.jpg_80x80q90.jpg_.webp" alt="">
+                        </div>
+                        <div class="item2 background1">
+                            <div class="title">
+                                二手数码商品
+                            </div>
+                        </div>
+                        <div class="item2  background2">
+                            <div class="title">
+                                区域零售速达
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="like-item">
+                    <div class="slidebar">
+                        <img src="img/card-zhongguozhizao.png_100x100q90.jpg_.webp" alt="">
+                        <p>热门TOP</p>
+                        <ul>
+                            <li>iPhone7</li>
+                            <li>S8</li>
+                            <li>游戏鼠标</li>
+                            <li>机械键盘</li>
+                            <li>单反相机</li>
+                            <li>AppleWatch</li>
+                            <li>DIY主机</li>
+                            <li>智能机器人</li>
+                            <li>制氧机</li>
+                            <li>榨汁机</li>
+                        </ul>
+                    </div>
+                    <div class="box-1">
+                        <div class="box1-1">
+                            <a href="##">
+                                <img src="img/card-手机精选.jpg_100x1000q90.jpg_.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="box1-1">
+                            <a href="##">
+                                <img src="img/card-torch-Appliances.jpg_100x1000q90.jpg_.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="box1-2">
+                            <a href="##">
+                                <img src="img/card-数码.jpg_180x180q90.jpg_.webp" alt="">
+                                <span class="slip"> 
+                                    <span class="leftwrapper">数码</span>
+                                <span class="rightwrapper">品质好货优选</span>
+                                <span class="bottomwrapper">为你精选数码行业优质好货</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-2">
+                        <div class="item1">
+                            <div class="left">
+                                <strong class="title">
+                                    数码好货
+                                </strong>
+                                <span class="subtitle">
+                                    等你来看
+                                </span>
+                            </div>
+                            <img src="img/Digital-good.jpg_80x80q90.jpg_.webp" alt="">
+                        </div>
+                        <div class="item1">
+                            <div class="left">
+                                <strong class="title">
+                                    品质家电
+                                </strong>
+                                <span class="subtitle">
+                                    等你来看
+                                </span>
+                            </div>
+                            <img src="img/quality-Appliances.jpg_80x80q90.jpg_.webp" alt="">
+                        </div>
+                        <div class="item2 background1">
+                            <div class="title">
+                                二手数码商品
+                            </div>
+                        </div>
+                        <div class="item2  background2">
+                            <div class="title">
+                                区域零售速达
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="like-item">
+                    <div class="slidebar">
+                        <img src="img/card-aiguangjie.png_100x100q90.jpg_.webp" alt="">
+                        <p>热门TOP</p>
+                        <ul>
+                            <li>iPhone7</li>
+                            <li>S8</li>
+                            <li>游戏鼠标</li>
+                            <li>机械键盘</li>
+                            <li>单反相机</li>
+                            <li>AppleWatch</li>
+                            <li>DIY主机</li>
+                            <li>智能机器人</li>
+                            <li>制氧机</li>
+                            <li>榨汁机</li>
+                        </ul>
+                    </div>
+                    <div class="box-1">
+                        <div class="box1-1">
+                            <a href="##">
+                                <img src="img/card-手机精选.jpg_100x1000q90.jpg_.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="box1-1">
+                            <a href="##">
+                                <img src="img/card-torch-Appliances.jpg_100x1000q90.jpg_.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="box1-2">
+                            <a href="##">
+                                <img src="img/card-数码.jpg_180x180q90.jpg_.webp" alt="">
+                                <span class="slip"> 
+                                    <span class="leftwrapper">数码</span>
+                                <span class="rightwrapper">品质好货优选</span>
+                                <span class="bottomwrapper">为你精选数码行业优质好货</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-2">
+                        <div class="item1">
+                            <div class="left">
+                                <strong class="title">
+                                    数码好货
+                                </strong>
+                                <span class="subtitle">
+                                    等你来看
+                                </span>
+                            </div>
+                            <img src="img/Digital-good.jpg_80x80q90.jpg_.webp" alt="">
+                        </div>
+                        <div class="item1">
+                            <div class="left">
+                                <strong class="title">
+                                    品质家电
+                                </strong>
+                                <span class="subtitle">
+                                    等你来看
+                                </span>
+                            </div>
+                            <img src="img/quality-Appliances.jpg_80x80q90.jpg_.webp" alt="">
+                        </div>
+                        <div class="item2 background1">
+                            <div class="title">
+                                二手数码商品
+                            </div>
+                        </div>
+                        <div class="item2  background2">
+                            <div class="title">
+                                区域零售速达
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="template">
+                <div class="image">
+                    <img src="img/template-img.jpg_80x40.jpg" alt="">
+                    <img src="img/template-img.jpg_80x40.jpg" alt="">
+                    <img src="img/template-img.jpg_80x40.jpg" alt="">
+                </div>
+                <div class="title">
+                    美式复古吊灯
+                </div>
+                <div class="bottom">
+                    热卖宝贝
+                </div>
+                <div class="right">
+                    天猫
+                </div>
+            </div>
+            <div class="tbh-blocks-hd">
+                <a href="##">更多 <span class="icon">&#xe653;</span></a>
+            </div>
+            <div class="fashion">
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img.png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr.png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="left">
+                            <img src="img/fashion-item-1.png_200x200.jpg" alt="">
+                            <div class="bottom">
+                                软萌针织衫
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="right-item">
+                                <img src="img/fashion-item-2.png_120x120.jpg" alt="">
+                                <div class="bottom">
+                                    包治百病
+                                </div>
+                            </div>
+                            <div class="right-item">
+                                <img src="img/fashion-item-3.png_120x120.jpg" alt="">
+                                <div class="bottom">
+                                    女神战靴
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img.png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr.png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="left">
+                            <img src="img/fashion-item-1.png_200x200.jpg" alt="">
+                            <div class="bottom">
+                                软萌针织衫
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="right-item">
+                                <img src="img/fashion-item-2.png_120x120.jpg" alt="">
+                                <div class="bottom">
+                                    包治百病
+                                </div>
+                            </div>
+                            <div class="right-item">
+                                <img src="img/fashion-item-3.png_120x120.jpg" alt="">
+                                <div class="bottom">
+                                    女神战靴
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tbh-layer-hd">
+                <a href="##">更多 <span class="icon">&#xe653;</span></a>
+            </div>
+            <div class="life-1">
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/taobaohuichi(logo).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr.png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="image-box">
+                            <img src="img/niurouwan.jpg_120x120.jpg" alt="">
+                            <strong>正宗牛肉丸</strong>
+                            <p>Q弹有嚼劲</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="img/shiliu.jpg_120x120.jpg" alt="">
+                            <strong>鲜甜石榴</strong>
+                            <p>皮薄汁水甜</p>
+                        </div>
+                        <div class="bottom-content">
+                            <a href="##">应季鲜果</a>
+                            <a href="##">精致糕点</a>
+                            <a href="##">全球美食</a>
+                            <a href="##">烘焙原料</a>
+                            <a href="##">无辣不欢</a>
+                            <a href="##">盛梦然海鲜</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img.png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr.png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="image-box">
+                            <img src="img/niurouwan.jpg_120x120.jpg" alt="">
+                            <strong>正宗牛肉丸</strong>
+                            <p>Q弹有嚼劲</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="img/shiliu.jpg_120x120.jpg" alt="">
+                            <strong>鲜甜石榴</strong>
+                            <p>皮薄汁水甜</p>
+                        </div>
+                        <div class="bottom-content">
+                            <a href="##">应季鲜果</a>
+                            <a href="##">精致糕点</a>
+                            <a href="##">全球美食</a>
+                            <a href="##">烘焙原料</a>
+                            <a href="##">无辣不欢</a>
+                            <a href="##">盛梦然海鲜</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="life-2">
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/taobaohuichi(logo).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr.png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="image-box">
+                            <img src="img/niurouwan.jpg_120x120.jpg" alt="">
+                            <strong>正宗牛肉丸</strong>
+                            <p>Q弹有嚼劲</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="img/shiliu.jpg_120x120.jpg" alt="">
+                            <strong>鲜甜石榴</strong>
+                            <p>皮薄汁水甜</p>
+                        </div>
+                        <div class="bottom-content">
+                            <a href="##">应季鲜果</a>
+                            <a href="##">精致糕点</a>
+                            <a href="##">全球美食</a>
+                            <a href="##">烘焙原料</a>
+                            <a href="##">无辣不欢</a>
+                            <a href="##">盛梦然海鲜</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img.png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr.png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="image-box">
+                            <img src="img/niurouwan.jpg_120x120.jpg" alt="">
+                            <strong>正宗牛肉丸</strong>
+                            <p>Q弹有嚼劲</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="img/shiliu.jpg_120x120.jpg" alt="">
+                            <strong>鲜甜石榴</strong>
+                            <p>皮薄汁水甜</p>
+                        </div>
+                        <div class="bottom-content">
+                            <a href="##">应季鲜果</a>
+                            <a href="##">精致糕点</a>
+                            <a href="##">全球美食</a>
+                            <a href="##">烘焙原料</a>
+                            <a href="##">无辣不欢</a>
+                            <a href="##">盛梦然海鲜</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tbh-play-hd">
+                <a href="##">更多 <span class="icon">&#xe653;</span></a>
+            </div>
+            <div class="play-1">
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img.png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr.png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="image-box">
+                            <img src="img/niurouwan.jpg_120x120.jpg" alt="">
+                            <strong>正宗牛肉丸</strong>
+                            <p>Q弹有嚼劲</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="img/shiliu.jpg_120x120.jpg" alt="">
+                            <strong>鲜甜石榴</strong>
+                            <p>皮薄汁水甜</p>
+                        </div>
+                        <div class="bottom-content">
+                            <a href="##">应季鲜果</a>
+                            <a href="##">精致糕点</a>
+                            <a href="##">全球美食</a>
+                            <a href="##">烘焙原料</a>
+                            <a href="##">无辣不欢</a>
+                            <a href="##">盛梦然海鲜</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="play-2">
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img(quanqiugou).png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr(quanqiugou).png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="right-item">
+                            <img src="img/fashion-item(kouhong)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                限量口红
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(xianglian)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                精致项链
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(bao)_120x120.jpg" alt="">
+                            <div class="bottom">
+                                包治百病
+                            </div>
+                        </div>
+                        <div class="right-item">
+                            <img src="img/fashion-item(falanghu).jpg_120x120.jpg" alt="">
+                            <div class="bottom">
+                                野田珐琅壶
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item cardstyle1">
+                    <div class="top">
+                        <img src="img/fashion-item-img.png_220x220.jpg" alt="">
+                        <div class="icon qr">
+                            &#xe666;
+                            <div class="pop">
+                                <img src="img/fashion-pop-qr.png_.webp" alt="">
+                                <p>手机淘宝扫码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="image-box">
+                            <img src="img/niurouwan.jpg_120x120.jpg" alt="">
+                            <strong>正宗牛肉丸</strong>
+                            <p>Q弹有嚼劲</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="img/shiliu.jpg_120x120.jpg" alt="">
+                            <strong>鲜甜石榴</strong>
+                            <p>皮薄汁水甜</p>
+                        </div>
+                        <div class="bottom-content">
+                            <a href="##">应季鲜果</a>
+                            <a href="##">精致糕点</a>
+                            <a href="##">全球美食</a>
+                            <a href="##">烘焙原料</a>
+                            <a href="##">无辣不欢</a>
+                            <a href="##">盛梦然海鲜</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banners">
+                <img src="img/tiyanshiqince.jpg" alt="">
+            </div>
+            <div class="best-seller">
+                <div class="title">
+                    <span class="icon fiery-icon">&#xe662;</span>
+                    <strong>热卖单品</strong>
+                </div>
+                <div class="sale-hd">
+                    <a href=" ##">摩托车</a>
+                    <a href=" ##">客厅灯</a>
+                    <a href=" ##">床垫</a>
+                    <a href=" ##">沙发垫</a>
+                    <a href=" ##">文胸</a>
+                    <a href=" ##">电脑椅</a>
+                    <a href=" ##">衣柜</a>
+                    <a href=" ##">男内裤</a>
+                    <a href=" ##">运动鞋</a>
+                    <a href=" ##">电脑桌</a>
+                    <a href=" ##">窗帘</a>
+                    <a href=" ##">鞋柜</a>
+                    <a href=" ##">牛仔裤</a>
+                    <a href=" ##">凉鞋男</a>
+                    <a href=" ##">茶几</a>
+                    <a href=" ##">椅子</a>
+                    <a href=" ##">凉席</a>
+                    <a href=" ##">沙发</a>
+                    <a href=" ##">男包</a>
+                    <a href=" ##">拉杆箱</a>
+                    <a href=" ##">男T恤</a>
+                    <a href=" ##">T恤男</a>
+                    <a href=" ##">面膜</a>
+                </div>
+                <div class="case">
+                    <div class="card-style2">
+                        <div class="left">
+                            <div class="top">
+                                <img src="img/remaidanpin-feiji.jpg_220x220.jpg" alt="">
+                                <div class="suspend-intro">
+                                    <p>极有家精选：美式复古装饰品</p>
+                                    <div class="lump">
+                                        去看看
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <span class="rmb">¥</span><em>129.00</em>
+                                <p><span class="baoyou gray"></span>月销0笔</p>
+                                <p class="black">
+                                    美的外观 经典的仿真工艺品 优质的马口铁加上手绘彩色图纹 造就复古的浓郁风格
+                                </p>
+                                <span class="gray">评价 0</span>
+                                <span class="gray">收藏 20</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="item">
+                                <div class="top">
+                                    <img src="img/fugufengshan.jpg_140x140.jpg" alt="">
+                                    <div class="suspend-intro">
+                                        <p>淘优惠：台式摇头电风扇</p>
+                                        <div class="lump">
+                                            去看看
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <span class="rmb">¥</span><em>129.00</em>
+                                    <p class="gray">
+                                        </span>月销0笔</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="top">
+                                    <img src="img/xiaodao.jpg_140x140.jpg" alt="">
+                                    <div class="suspend-intro">
+                                        <p>亏本冲量：多功能户外小刀</p>
+                                        <div class="lump">
+                                            去看看
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <span class="rmb">¥</span><em>129.00</em>
+                                    <p class="gray">
+                                        </span>月销0笔</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <img src="img/dezhiwanbiao.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="card-style2">
+                        <div class="left">
+                            <div class="top">
+                                <img src="img/remaidanpin-feiji.jpg_220x220.jpg" alt="">
+                                <div class="suspend-intro">
+                                    <p>极有家精选：美式复古装饰品</p>
+                                    <div class="lump">
+                                        去看看
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <span class="rmb">¥</span><em>129.00</em>
+                                <p><span class="baoyou gray"></span>月销0笔</p>
+                                <p class="black">
+                                    美的外观 经典的仿真工艺品 优质的马口铁加上手绘彩色图纹 造就复古的浓郁风格
+                                </p>
+                                <span class="gray">评价 0</span>
+                                <span class="gray">收藏 20</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="item">
+                                <div class="top">
+                                    <img src="img/fugufengshan.jpg_140x140.jpg" alt="">
+                                    <div class="suspend-intro">
+                                        <p>淘优惠：台式摇头电风扇</p>
+                                        <div class="lump">
+                                            去看看
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <span class="rmb">¥</span><em>129.00</em>
+                                    <p class="gray">
+                                        </span>月销0笔</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="top">
+                                    <img src="img/xiaodao.jpg_140x140.jpg" alt="">
+                                    <div class="suspend-intro">
+                                        <p>亏本冲量：多功能户外小刀</p>
+                                        <div class="lump">
+                                            去看看
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <span class="rmb">¥</span><em>129.00</em>
+                                    <p class="gray">
+                                        </span>月销0笔</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <img src="img/dezhiwanbiao.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="card-style2">
+                        <div class="left">
+                            <div class="top">
+                                <img src="img/remaidanpin-feiji.jpg_220x220.jpg" alt="">
+                                <div class="suspend-intro">
+                                    <p>极有家精选：美式复古装饰品</p>
+                                    <div class="lump">
+                                        去看看
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <span class="rmb">¥</span><em>129.00</em>
+                                <p><span class="baoyou gray"></span>月销0笔</p>
+                                <p class="black">
+                                    美的外观 经典的仿真工艺品 优质的马口铁加上手绘彩色图纹 造就复古的浓郁风格
+                                </p>
+                                <span class="gray">评价 0</span>
+                                <span class="gray">收藏 20</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="item">
+                                <div class="top">
+                                    <img src="img/fugufengshan.jpg_140x140.jpg" alt="">
+                                    <div class="suspend-intro">
+                                        <p>淘优惠：台式摇头电风扇</p>
+                                        <div class="lump">
+                                            去看看
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <span class="rmb">¥</span><em>129.00</em>
+                                    <p class="gray">
+                                        </span>月销0笔</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="top">
+                                    <img src="img/xiaodao.jpg_140x140.jpg" alt="">
+                                    <div class="suspend-intro">
+                                        <p>亏本冲量：多功能户外小刀</p>
+                                        <div class="lump">
+                                            去看看
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <span class="rmb">¥</span><em>129.00</em>
+                                    <p class="gray">
+                                        </span>月销0笔</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <img src="img/dezhiwanbiao.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="taobao-live">
+                <div class="title">
+                    <span class="icon fiery-icon">&#xe662;</span>
+                    <strong>淘宝直播</strong>
+                </div>
+                <div class="content">
+                    <div class="left">
+                        <div class="name">
+                            <img src="img/taobao-live-touxiang1.jpg_30x30q90.jpg_.webp" alt="">
+                            <span>安菊拉</span>
+                        </div>
+                        <div class="main-img">
+                            <img src="img/taobao-live1.jpg_400x400q90_.webp" alt="" class="live-img">
+                            <img src="img/live-png.png" alt="" class="live-png">
+                            <p>夏季仙女养成记</p>
+                        </div>
+                        <div class="bottom">
+                            <a href="##">直播</a>
+                            <span>11983观看</span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="item">
+                            <div class="name">
+                                <img src="img/taobao-live-touxiang2.jpg_30x30q90.jpg_.webp" alt="">
+                                <span>麦瑟兔子MOOEND</span>
+                            </div>
+                            <div class="main-img">
+                                <img src="img/taobao-live3.jpg_160x160q90_.webp" alt="" class="live-img">
+                                <img src="img/live-png.png" alt="" class="live-png">
+                                <p>夏天跟火锅更配哦</p>
+                            </div>
+                            <div class="bottom">
+                                <a href="##">直播</a>
+                                <span>11983观看</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                <img src="img/taobao-live-touxiang2.jpg_30x30q90.jpg_.webp" alt="">
+                                <span>麦瑟兔子MOOEND</span>
+                            </div>
+                            <div class="main-img">
+                                <img src="img/taobao-live3.jpg_160x160q90_.webp" alt="" class="live-img">
+                                <img src="img/live-png.png" alt="" class="live-png">
+                                <p>夏天跟火锅更配哦</p>
+                            </div>
+                            <div class="bottom">
+                                <a href="##">直播</a>
+                                <span>11983观看</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                <img src="img/taobao-live-touxiang2.jpg_30x30q90.jpg_.webp" alt="">
+                                <span>麦瑟兔子MOOEND</span>
+                            </div>
+                            <div class="main-img">
+                                <img src="img/taobao-live3.jpg_160x160q90_.webp" alt="" class="live-img">
+                                <img src="img/live-png.png" alt="" class="live-png">
+                                <p>夏天跟火锅更配哦</p>
+                            </div>
+                            <div class="bottom">
+                                <a href="##">直播</a>
+                                <span>11983观看</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                <img src="img/taobao-live-touxiang2.jpg_30x30q90.jpg_.webp" alt="">
+                                <span>麦瑟兔子MOOEND</span>
+                            </div>
+                            <div class="main-img">
+                                <img src="img/taobao-live3.jpg_160x160q90_.webp" alt="" class="live-img">
+                                <img src="img/live-png.png" alt="" class="live-png">
+                                <p>夏天跟火锅更配哦</p>
+                            </div>
+                            <div class="bottom">
+                                <a href="##">直播</a>
+                                <span>11983观看</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                <img src="img/taobao-live-touxiang2.jpg_30x30q90.jpg_.webp" alt="">
+                                <span>麦瑟兔子MOOEND</span>
+                            </div>
+                            <div class="main-img">
+                                <img src="img/taobao-live3.jpg_160x160q90_.webp" alt="" class="live-img">
+                                <img src="img/live-png.png" alt="" class="live-png">
+                                <p>夏天跟火锅更配哦</p>
+                            </div>
+                            <div class="bottom">
+                                <a href="##">直播</a>
+                                <span>11983观看</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                <img src="img/taobao-live-touxiang2.jpg_30x30q90.jpg_.webp" alt="">
+                                <span>麦瑟兔子MOOEND</span>
+                            </div>
+                            <div class="main-img">
+                                <img src="img/taobao-live3.jpg_160x160q90_.webp" alt="" class="live-img">
+                                <img src="img/live-png.png" alt="" class="live-png">
+                                <p>夏天跟火锅更配哦</p>
+                            </div>
+                            <div class="bottom">
+                                <a href="##">直播</a>
+                                <span>11983观看</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                <img src="img/taobao-live-touxiang2.jpg_30x30q90.jpg_.webp" alt="">
+                                <span>麦瑟兔子MOOEND</span>
+                            </div>
+                            <div class="main-img">
+                                <img src="img/taobao-live3.jpg_160x160q90_.webp" alt="" class="live-img">
+                                <img src="img/live-png.png" alt="" class="live-png">
+                                <p>夏天跟火锅更配哦</p>
+                            </div>
+                            <div class="bottom">
+                                <a href="##">直播</a>
+                                <span>11983观看</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                <img src="img/taobao-live-touxiang2.jpg_30x30q90.jpg_.webp" alt="">
+                                <span>麦瑟兔子MOOEND</span>
+                            </div>
+                            <div class="main-img">
+                                <img src="img/taobao-live3.jpg_160x160q90_.webp" alt="" class="live-img">
+                                <img src="img/live-png.png" alt="" class="live-png">
+                                <p>夏天跟火锅更配哦</p>
+                            </div>
+                            <div class="bottom">
+                                <a href="##">直播</a>
+                                <span>11983观看</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="helper">
+                <div class="item">
+                    <div class="top">
+                        <span class="icon">
+                            &#xe64b;
+                        </span>
+                        <span class="title">
+                            消费者保障
+                        </span>
+                    </div>
+                    <div class="bottom">
+                        <a href="##">保障范围</a>
+                        <a href="##">退货退款流程</a>
+                        <a href="##">服务中心</a>
+                        <a href="##">更多特色服务</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="top">
+                        <span class="icon">
+                            &#xe6ab;
+                        </span>
+                        <span class="title">
+                            新手上路
+                        </span>
+                    </div>
+                    <div class="bottom">
+                        <a href="##">新手专区</a>
+                        <a href="##">消费警示</a>
+                        <a href="##">交易安全</a>
+                        <a href="##">24小时在线帮助</a>
+                        <a href="##">免费开店</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="top">
+                        <span class="icon">
+                            &#xe614;
+                        </span>
+                        <span class="title">
+                            付款方式
+                        </span>
+                    </div>
+                    <div class="bottom">
+                        <a href="##">快捷支付</a>
+                        <a href="##">信用卡</a>
+                        <a href="##">余额宝</a>
+                        <a href="##">蚂蚁花呗</a>
+                        <a href="##">货到付款</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="top">
+                        <span class="icon">
+                            &#xe613;
+                        </span>
+                        <span class="title">
+                            淘宝特色
+                        </span>
+                    </div>
+                    <div class="bottom">
+                        <a href="##">手机淘宝</a>
+                        <a href="##">旺旺/旺信</a>
+                        <a href="##">大众审评</a>
+                        <a href="##">更多特色服务</a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div class="footer">
+          <div class="ali-brand">
+                <a href="##">阿里巴巴集团</a>
+                <b>丨</b>
+                <a href="##">淘宝网</a>
+                <b>丨</b>
+                <a href="##">天猫</a>
+                <b>丨</b>
+                <a href="##">聚划算</a>
+                <b>丨</b>
+                <a href="##">全球速卖通</a>
+                <b>丨</b>
+                <a href="##">阿里巴巴国际交易市场</a>
+                <b>丨</b>
+                <a href="##">1688</a>
+                <b>丨</b>
+                <a href="##">阿里妈妈</a>
+                <b>丨</b>
+                <a href="##">飞猪</a>
+                <b>丨</b>
+                <a href="##">阿里云计算</a>
+                <b>丨</b>
+                <a href="##">YunOS</a>
+                <b>丨</b>
+                <a href="##">阿里通讯</a>
+                <b>丨</b>
+                <a href="##">一淘</a>
+                <b>丨</b>
+                <a href="##">万网</a>
+                <b>丨</b>
+                <a href="##">高德</a>
+                <b>丨</b>
+                <a href="##">UC</a>
+                <b>丨</b>
+                <a href="##">友盟</a>
+                <b>丨</b>
+                <a href="##">虾米</a>
+                <b>丨</b>
+                <a href="##">阿里星球</a>
+                <b>丨</b>
+                <a href="##">钉钉</a>
+                <b>丨</b>
+                <a href="##">支付宝</a>
+                <b>丨</b>
+                <a href="##">优酷</a>
+                <b>丨</b>
+                <a href="##">土豆</a>
+                <b>丨</b>
+                <a href="##">阿里健康</a>
+                <b>丨</b>
+                <a href="##">阿里影业</a>
+                <b>丨</b>
+                <a href="##">阿里体育</a>
+                <b>丨</b>
+                <a href="##">网商银行</a>
+            </div>
+            <div class="ali-about">
+                <a href="##">关于淘宝</a>
+                <a href="##">合作伙伴</a>
+                <a href="##">营销中心</a>
+                <a href="##">廉正举报</a>
+                <a href="##">联系客服</a>
+                <a href="##">开放平台</a>
+                <a href="##">诚征英才</a>
+                <a href="##">联系我们</a>
+                <a href="##">网站地图</a>
+                <a href="##">法律声明及隐私权政策</a>
+                <a href="##">知识产权</a>
+                <b>丨</b>
+                <a href="##">©2003-2017 Taobao.com 版权所有</a>
+            </div>
+            <div class="licence">
+                <a href="##">网络文化经营许可证：浙网文[2013]0268-027号</a>
+                <b>丨</b>
+                <a href="##">增值电信业务经营许可证：浙B2-20080224</a>
+                <b>丨</b>
+                <span>信息网络传播视听节目许可证：1109364号</span>
+                <b>丨</b>
+                <span>互联网违法和不良信息举报电话：0571-81683755 blxxjb@alibaba-inc.com</span>
+            </div>
+            <p>
+                <span></span><a href="##">浙公安网安备 330100002000078</a>
+            </p>
+            <div class="footer-bottom">
+                <a href="##"><img src="img/police.gif" alt=""></a>
+                <a href="##"></a>
+                <a href="##"></a>
+                <a href="##"></a>
+                <a href="##"></a>
+                <a href="##"></a>
+                <a href="##"><img src="img/online-sue.png" alt=""></a>
+                <a href="##"></a>
+                <a href="##"></a>
+                <a href="##"></a>
+                <a href="##"></a>
+            </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+<script src="swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+var swiperOne = new Swiper('.swiper-one', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    spaceBetween: 30,
+    simulateTouch: false,
+    prevButton: '.swiper-button-prev',
+    nextButton: '.swiper-button-next',
+    loop: true,
+    autoplay: 3000,
+    grabCursor: true,
+    slidesPerView: 1,
+    paginationClickable: true,
+    pagination: '.swiper-pagination',
+});
+// $(".swiper-one").mouseenter(function() { //滑过悬停
+//     mySwiper.stopAutoplay(); //mySwiper 为上面你swiper实例化的名称
+// }).mouseleave(function() { //离开开启
+//     mySwiper.startAutoplay();
+// });
+var swiperTwo = new Swiper('.swiper-two', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    spaceBetween: 30,
+    simulateTouch: false,
+    prevButton: '.swiper-button-prev',
+    nextButton: '.swiper-button-next',
+    loop: true,
+    autoplay: 3000,
+    grabCursor: true,
+    slidesPerView: 1,
+    paginationClickable: true,
+    pagination: '.swiper-pagination',
+    paginationType: 'fraction',
+    paginationCustomRender: function(swiper, current, total) {
+        return current + ' ofgh gfhfhdf ' + total;
+    }
+});
+var TaobaoTopSwiper = new Swiper('.taobao-top-swiper', {
+    // pagination: '.swiper-pagination',
+    direction: 'vertical',
+    slidesPerView: 1,
+    paginationClickable: true,
+    spaceBetween: 30,
+    mousewheelControl: true,
+    autoplay: 3000,
+    loop: true,
+});
+// 鼠标悬浮swiper停止轮播
+// $('.swiper-container').mouseover(function(){
+//       mySwiper.stopAutoplay();
+//   })
+//   $('.swiper-container').mouseout(function(){
+//      mySwiper.startAutoplay();
+//      console.log("悬浮悬浮")
+//   })
+</script>
+<script>
+// var siteMapMouse = function(){
+//  console.log("网站导航悬浮")
+// }
+console.log(document.querySelector(".siteMapMouse"));
+var siteMapMouse = document.querySelector(".siteMapMouse")
+siteMapMouse.addEventListener("click", function() {
+    console.log("dgfhgujhgjhdfg")
+});
+
+function siteMapShow() {
+    console.log("dfgdfhgfdhfhdgfgdhdg")
+}
+console.log(siteMapMouse)
+var siteNavBar = new Vue({
+    el: ".site-nav-bar",
+    data: {
+        MyTaobaoSelectItems: [{
+            MyTaobaoSelectItem: "已买到的宝贝"
+        }, {
+            MyTaobaoSelectItem: "我的足迹"
+        }],
+        favoriteSelectItems: [{
+            favoriteSelectItem: "收藏的宝贝"
+        }, {
+            favoriteSelectItem: "收藏的店铺"
+        }, ],
+        sellerSelectItems: [{
+            sellerSelectItem: "免费开店"
+        }, {
+            sellerSelectItem: "已卖出的宝贝"
+        }, {
+            sellerSelectItem: "出售中的宝贝"
+        }, {
+            sellerSelectItem: "卖家服务市场"
+        }, {
+            sellerSelectItem: "卖家培训中心"
+        }, {
+            sellerSelectItem: "体检中心"
+        }, {
+            sellerSelectItem: "问商友"
+        }, ],
+        serviceSelectItems: [{
+            serviceSelectItem: "消费者客服"
+        }, {
+            serviceSelectItem: "卖家客服"
+        }, ]
+    }
+})
+var sitemapBar = new Vue({
+    el: ".sitemap",
+    data: {
+
+    }
+
+})
+var searchBoxnew = new Vue({
+    el: ".search-box",
+    data: {
+        tianmao: "",
+        inputContent: "",
+        searchShow: "",
+        items: [{
+            name: "宝贝",
+            toggle: true
+        }, {
+            name: "天猫",
+            toggle: false
+        }, {
+            name: "店铺",
+            toggle: false
+        }],
+        goodsTabList: [{
+            tabName: "有线鼠标"
+        }, {
+            tabName: "海报设计"
+        }, {
+            tabName: "淘宝美工"
+        }, {
+            tabName: "新款童装"
+        }, {
+            tabName: "吉他"
+        }, {
+            tabName: "电钢琴"
+        }, {
+            tabName: "钢琴"
+        }, {
+            tabName: "摩托车"
+        }, {
+            tabName: "电动滑板车"
+        }, {
+            tabName: "mp3"
+        }, {
+            tabName: "尤克里里"
+        }]
+    },
+    methods: {
+        radioGroup(index) {
+            this.items.forEach(function(item) {
+                item.toggle = false;
+            })
+            this.items[index].toggle = true;
+            if (index === 1) {
+                this.tianmao = true;
+            } else {
+                this.tianmao = false;
+            }
+            console.log(this.tianmao)
+            console.log(this.inputContent)
+        }
+    },
+    watch: {
+        inputContent(cur, old) {
+            if (cur !== "") {
+                this.searchShow = true;
+                console.log("输入框中有东西");
+            } else {
+                this.searchShow = false;
+                console.log("输入框是空的");
+            }
+        }
+    },
+    computed: {
+
+    }
+})
+var crumbsNav = new Vue({
+    el: ".crumbs-nav",
+    data: {
+        curmbsNavItemsOne: [{
+            curmbsName: "天猫"
+        }, {
+            curmbsName: "聚划算"
+        }, {
+            curmbsName: "天猫超市"
+        }, ],
+        curmbsNavItemsTwo: [{
+            curmbsName: "淘抢购"
+        }, {
+            curmbsName: "电器城"
+        }, {
+            curmbsName: "司法拍卖"
+        }, {
+            curmbsName: "中国质造"
+        }, {
+            curmbsName: "特色中国"
+        }, ],
+        curmbsNavItemsThree: [{
+            curmbsName: "飞猪旅行"
+        }, {
+            curmbsName: "智能生活"
+        }, {
+            curmbsName: "苏宁易购"
+        }, ]
+    }
+})
+</script>
+<script>
+//此处是.col-right .tagbox选择款的js代码 
+function showTag(name, cur) {
+    var n = document.getElementById(name).getElementsByTagName("li").length;
+    console.log(n);
+    for (let i = 1; i <= n; i++) {
+        var menu = document.getElementById(name + i);
+        var con = document.getElementById(name + "Con" + i);
+        menu.className = i == cur ? "curTag" : "";
+        con.style.display = i == cur ? "block" : "none";
+    }
+    console.log("tdghftrghtrgfhtrhyrthrthgtrhtrhytopdkjrifdklglsdjkgfffksljfgdkljsdfgos;tirdlgkjmjgjgjgjggj")
+}
+
+function suspendShow(name, cur) {
+    var show = document.getElementById(name).getElementsByClassName("suspend").length;
+    console.log(show);
+    for (let i = 1; i <= show; i++) {
+        var menuOne = document.getElementById(name + i);
+        var conOne = document.getElementById(name + "Con" + i);
+        // menuOne.className = i == cur ? "curTag" : "";
+        i == cur ? menuOne.classList.add("curTag") : menuOne.classList.remove("curTag");
+        // setAttribute("className", "abc")
+        conOne.style.display = i == cur ? "block" : "none";
+    }
+}
+// window.onclick = function() {
+//     var show = document.getElementById(name).getElementsByClassName("suspend").length;
+//     console.log(show);
+//     for (let i = 1; i <= show; i++) {
+//         var menuOne = document.getElementById(name + i);
+//         var conOne = document.getElementById(name + "Con" + i);
+//         conOne.style.display = "none";
+//         menuOne.classList.remove("curTag");
+//     }
+// }
+window.addEventListener('scroll',winScroll);
+function winScroll(e){
+  // 拿到e之后进行你需要的处理
+  console.log(e+"这是scroll")
+}
+</script>
+
+</html>
